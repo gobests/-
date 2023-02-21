@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .clear {
+        overflow: hidden;
+    }
+    .container {
+        width: 100%;
+        background-color: #ccc;
+    }
+    .item {
+        float: left;
+        color: white;
+        font-size: 20px;
+    }
+    .content {
+        height: 200px;
+        background-color: green;
+        margin-left: 200px;
+        margin-right: 150px;
+    }
+    .left-item {
+        width: 200px;
+        background-color: red;
+        margin-left: -100%;
+    }
+    .right-item {
+        width: 150px;
+        background-color: blue;
+        margin-left: -150px;
+    }
+</style>
+<body>
+    <div class="clear">
+        <div class="container item">
+            <div class="content">主要内容</div>
+        </div>
+        <div class="left-item item">left-item</div>
+        <div class="right-item item">right-item</div>
+    </div>
+</body>
+</html>
