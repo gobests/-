@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body></body>
+<script>
+    const obj1 = {
+        name:'张三',
+        age:18,
+        address:{
+            city:"北京",
+        },
+        hobby:["台球","篮球"],
+        fn:function(){
+            console.log(123);
+        }
+    };
+
+    // const obj2 = obj1;
+    const obj2 = deepClone(obj1);
+    // // obj2做的任何修改不影响obj1
+    obj2.address.city = "上海";
+    console.log(obj1); 
+    console.log(obj2); 
+
+    function deepClone(obj) {
+        // JSON.parse将数据转换为新的js对象，json.stringify()将对象、数组转换成字符串
+        return JSON.parse(JSON.stringify(obj));//新的对象返回出去变成obj2
+    }
+
+    // 递归处理deepClone
+    const obj2 = deepClone(obj1);
+    obj2.address.city = "上海"
+    console.log(obj1);
+    console.log(obj2);
+
+    function deepClone(obj) {
+        if(typeof obj !=='object' || obj == null){
+            return obj;
+        }
+
+        let res = obj instanceof Array ? [] : {};
+
+        for(let key in obj) {
+            // hasOwnProperty:是用来判断一个对象是否有你给出的名称的属性或对象。
+            if(obj.hasOwnProperty(key)){
+                res[key] = deepClone(obj[key])
+            }
+        }
+
+        return res;
+    }
+</script>
+</html>

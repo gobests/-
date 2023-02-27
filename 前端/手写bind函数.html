@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body></body>
+<script>
+    function fn(a,b,c,d){
+        console.log(this);
+        console.log(a,b,c,d);
+
+        return "this is return"
+    }
+    // x=100 第一个参数是我想要改的this   原this是window
+    // 后面 是要传的参数
+    // const cb  = fn.bind({x:100},1,2,3);
+    // console.log(cb());
+
+    // 手写bind
+    // mybind定义到function的prototype身上
+    Function.prototype.mybind = function(){
+        const fn = this; // this就是fn，把fn存一下
+
+        // {x:100},[1,2,3]   slice可以切分一个数组，属于把arguments（类数组）切成一个真正的数组
+        const arg = Array.prototype.slice.call(arguments);
+        const _this = arg.shift();
+
+        // 返回一个函数
+        return function(){
+            return fn.apply(_this,arg); // 改变this用的apply
+        }
+    }
+    const cb  = fn.mybind({x:900},1,2,3,4);
+    console.log(cb())
+</script>
+</html>

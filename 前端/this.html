@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //非严格模式
+    // function a () {
+    //     console.log(this);
+    // }
+    // a()
+
+    // 严格模式下
+    // "use strict"
+    // function a() {
+    //     console.log(this);
+    // }
+    // a()
+
+    // function a (){
+    //     console.log(this);
+    // }
+    // // a.apply("abc");
+    // const fn = a.bind({x:101});
+    // fn()
+
+    // function fn(){
+    //     setTimeout(function(){
+    //         console.log(this);
+    //     },100)
+    // }
+    // fn.call({x:101});
+
+    // class obj {
+    //     fn(){
+    //         setTimeout(()=>{
+    //             console.log(this);
+    //         },100)
+    //     }
+    // }
+    // const o = new obj();
+    // o.fn();
+
+    // class obj {
+    //     say = () => {
+    //         console.log(this);
+    //     }
+    // }
+    // const obj1 = new obj();
+    // obj1.say() // obj {say: ƒ}
+
+    // const obj2 = {
+    //     say:()=>{
+    //         console.log(this);
+    //     },
+    // }
+    // obj2.say();
+
+   
+</script>
+</html>
