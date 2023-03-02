@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body></body>
+<script>
+    //（1） var 没有块级作用域
+    // let const 有块级作用域
+    // for(var i=0;i<5;i++) {
+    //     console.log(i);
+    // }
+    // console.log(i);// 没有块级作用域所以输出12345
+
+    // for(let i=0;i<5;i++) {
+    //     console.log(i);// 块级作用域，所以输出1234报错，最外层log不输出
+    // }
+    // console.log(i); // let const 声明的只能在花括号之内去使用，超过花括号就报错
+
+    // （2）
+    // if(true){
+    //     var i = 5; // 同理，要是let const报错
+    // }
+    // console.log(i);
+
+
+    // （3）var 有变量提升   let const 没有变量提升
+    console.log(a); // 在我使用a之前提前把变量的声明提到了最上面，
+    // 但是只有声明没有负值，所以输出undefined
+    var a = 10;
+
+    // （4）var 可以重名  let const 不能重名
+    var a = 5;
+    var a = 10;
+    console.log(a);
+
+
+    // 暂时性死区
+    // let/const会被先创建出来，但还未绑定值，所以不能用
+    // 不要在let const声明前使用变量，用了会触发暂时性死区
+    // 例如：
+    // a=100;
+    // let a = 20;
+
+    // 代码题
+    // 题目1
+    // function fn() {
+    //   let a = 10;
+    //   if (true) {
+    //     let a = 5;
+    //   }
+    //   console.log(a);
+    // }
+    // fn();
+
+    // 题目2
+    // var a = 5;
+    // if (true) {
+    //   a = 200;
+    //   let a = 10;
+    // }
+    // console.log(a);
+
+    // 题目3
+    // var a = 5;
+    // if (true) {
+    //   let a = 10;
+    // }
+    // console.log(a);
+
+    // 题目4
+    // function fn() {
+    //   console.log(a);
+    //   var a = 10;
+    // }
+    // var a = 5;
+    // fn();
+</script>
+</html>

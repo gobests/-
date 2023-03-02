@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body></body>
+<script>
+    // const arr = [1,2,[3,4]];
+    // console.log(arr.flat());
+
+    // // 手写flat方法
+    // const arr = [1,2,[3,4]];
+    // const res = flat(arr);
+    // console.log(res);
+    // // 定义这个函数
+    // function flat(arr){
+    //     return Array.prototype.concat.apply([],arr)
+    // }
+ 
+    // const arr1 = [110,20,30];
+    // // const arr2 = [40,50];
+    // const arr3 = arr1.concat(60,70,[90,80])
+    // console.log(arr3);
+
+    // // 数组里面嵌套一个数组(多维数组拍平)递归（1）
+    // const arr = [1,2,[3,4,[5,6]]];
+    // const res = flat(arr);
+    // console.log(res);
+    // function flat(arr){
+    //     // 判断arr是不是一维数组
+    //     // some可以把数组当中的每一项都遍历一下（item）就是数组当中的每一项
+    //     const hasDeep = arr.some(item => item instanceof Array) // 判断item是不是一个数组，任何item是一个数组的化，arr都是true
+    //     if(! hasDeep) {
+    //         return arr;
+    //     }
+    //     const res =  Array.prototype.concat.apply([],arr);
+    //     return flat(res); // 递归
+    // }
+
+    const arr = [1,2,[3,4,[5,6]]];
+    const res = flat(arr);
+    console.log(res);
+    function flat(arr){
+        while(arr.some(item => item instanceof Array)){
+            arr = Array.prototype.concat.apply([],arr);
+        }
+        return arr;
+    }  
+</script>
+</html>

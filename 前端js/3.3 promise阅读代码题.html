@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 另一种写法
+    // Promise.resolve()
+    // .then(()=> {
+    //     console.log(1);
+    // }).catch(()=>{
+    //     console.log(2);
+    // })
+
+    // （1） then 和 catch 内部没有 throw new Error 相当于 resolve
+    // Promise.resolve()
+    // .then(()=>{
+    //     console.log(1);
+    // })
+    // .catch(()=>{
+    //     console.log(2);
+    // })
+    // .then(()=>{
+    //     console.log(3);
+    // })
+
+    // （2）
+    // Promise.resolve()
+    // .then(()=>{
+    //     console.log(1);
+    //     throw new Error();
+    // })
+    // .catch(()=>{
+    //     console.log(2);
+    // })
+    // .then(()=>{
+    //     console.log(3);
+    // })
+
+    // (3)
+    // Promise.reject()
+    // .then(()=>{
+    //     console.log(1);
+    // })
+    // .catch(()=>{
+    //     console.log(2);
+    // })
+    // .then(()=>{
+    //  console.log(3);   
+    // })
+
+    // (4)
+    // Promise.reject()
+    // .then(()=>{
+    //     console.log(1);
+    // })
+    // .catch(()=>{
+    //     console.log(2);
+    //     throw new Error();
+    // })
+    // .then(()=>{
+    //     console.log(3);
+    // })
+
+    // // 考点2  async function 相当于返回一个promise.resolve
+    // async function fn(){
+    //     return 100;
+    // }
+    // (async function(){
+    //     const a = fn();
+    //     const b = await fn();
+    //     console.log(a);
+    //     console.log(b);
+    // })();
+
+    // (2)
+    // async function fn1(){
+    //     console.log("fn1 start");
+    //     await fn2();
+    //     console.log("fn1 end");
+    // }
+    // async function fn2() {
+    //     console.log("fn2 start");
+    // }
+    // console.log("start");
+    // fn1();
+    // console.log("end");
+
+    // (3)
+    // async function fn1() {
+    //     console.log("fn1 start");
+    //     await fn2();
+    //     console.log("fn1 end");
+    //     await fn3();
+    //     console.log("fn3 end");
+    // }
+    // async function fn2(){
+    //     console.log("fn2");
+    // }
+    // async function fn3(){
+    //     console.log("fn3");
+    // }
+    // console.log("start");
+    // fn1();
+    // console.log("end");
+
+    // 考点3
+    // console.log("start");
+    // setTimeout(()=>{
+    //     console.log("setTimeout");
+    // });
+    // Promise.resolve().then(()=>{
+    //     console.log("Promise");
+    // });
+    // console.log("end");
+
+    // （1）
+    async function fn1(){
+        console.log("fn1 start");
+        await fn2();
+        console.log("fn1 end");
+    }
+    async function fn2(){
+        console.log("fn2");
+    }
+    console.log("start");
+    setTimeout(()=>{
+        console.log("setTimeout");
+    })
+    fn1();
+    console.log("end");
+</script>
+</html>

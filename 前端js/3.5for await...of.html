@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function getPromise(num){
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve(num);
+            },1000)
+        })
+    }
+    const p1 = getPromise(10);
+    const p2 = getPromise(20);
+    const p3 = getPromise(30);
+    const list = [p1,p2,p3];
+    // 单独的每一个结果
+    // (async function(){
+    //     for await(let res of list){
+    //         console.log(res);
+    //     }
+    // })()
+
+    // 一组结果
+    // Promise.all(list).then((res)=>{
+    //     console.log(res);
+    // })
+    
+    // 繁难
+    // (async function(){
+    //     const data = [10,20,30];
+    //     const res1 = await getPromise(data[0])
+    //     console.log(res1);
+    //     const res2 = await getPromise(data[1])
+    //     console.log(res2);
+    //     const res3 = await getPromise(data[2])
+    //     console.log(res3);
+    // })()
+
+    // 简写
+    (async function(){
+        const data = [10,20,30];
+        for(let val of data){
+            const res = await getPromise(val);
+            console.log(res);
+        }
+    })()
+</script>
+</html>

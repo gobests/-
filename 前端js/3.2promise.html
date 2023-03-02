@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- https://5b0988e595225.cdn.sohucs.com/images/20171031/9e0306ba3e1d4774bc88e14b2534f1db.png -->
+<!-- https://www.itcast.cn/files/image/201904/20190415093116732.png -->
+<body>
+
+</body>
+<script>
+    // // new Image()创建的是img对象，类似于使用document.getElementxxx获取到的DOM对象。
+    // const oImg = new Image();
+    // // 相当于src
+    // oImg.src = "https://www.itcast.cn/files/image/201904/20190415093116732.png";
+    // oImg.onload=()=>{ //图片加载完成之后插入
+    //     document.body.appendChild(oImg);
+    // }
+    // oImg.onerror = function(){
+    //     console.log("error");
+    // }
+
+    // // 练习promise
+    // // 请求成功的时候触发resolve，请求失败的时候触发reject
+    // const oP = new Promise((resolve,reject)=>{
+    //     setTimeout(()=>{
+    //         // resolve();
+    //         reject()
+    //     },1000)
+    // });
+    // oP.then(()=>{
+    //     console.log('then');
+    // }).catch(()=>{
+    //     console.log("catch");
+    // })
+
+    // // (1) promise加载图片  创建一个promise实例
+    // const oP = new Promise((resolve,reject)=>{
+    //     // new Image()创建的是img对象，类似于使用document.getElementxxx获取到的DOM对象。
+    //     const oImg = new Image();
+    //     // 类似于img标签中的src
+    //     oImg.src = "https://www.itcast.cn/files/image/201904/20190415093116732.png";
+    //     // 执行的时候
+    //     oImg.onload = () => {
+    //         resolve(oImg);
+    //     }
+    //     // 图片加载失败的时候
+    //     oImg.onerror = () => {
+    //         reject("图片加载失败");
+    //     }
+    // });
+    // // 当图片执行的时候在页面插入图片
+    // oP.then((oImg)=>{
+    //     document.body.appendChild(oImg)
+    // }).catch((errMsg)=>{  // 不执行的时候
+    //     console.log(errMsg);
+    // })
+
+
+    // // (2) loadImg
+    // function loadImg(src){
+    //     return new Promise((resolve,reject)=>{
+    //     const oImg = new Image();
+    //     oImg.src = src;
+    //     oImg.onload = () => {
+    //         resolve(oImg);
+    //     }
+    //     oImg.onerror = () => {
+    //         reject("图片加载失败");
+    //     }
+    // });
+    // }
+    // // 自动加载图片
+    // loadImg('https://www.itcast.cn/files/image/201904/20190415093116732.png')
+    // .then((oImg)=>{
+    //     document.body.appendChild(oImg);
+    //     // 第二张图片
+    //     return loadImg('https://5b0988e595225.cdn.sohucs.com/images/20171031/9e0306ba3e1d4774bc88e14b2534f1db.png')
+    // }).then((oImg)=>{
+    //     document.body.appendChild(oImg)
+    // })
+    // .catch((errMsg)=>{  // 不执行的时候
+    //     console.log(errMsg);
+    // })
+
+
+    // (3)
+    function loadImg(src){
+        return new Promise((resolve,reject)=>{
+        const oImg = new Image();
+        oImg.src = src;
+        oImg.onload = () => {
+            resolve(oImg);
+        }
+        oImg.onerror = () => {
+            reject("图片加载失败");
+        }
+    });
+    }
+    (async function(){
+        try {
+            const oImg = await loadImg("https://www.itcast.cn/files/image/201904/20190415093116732.png")
+            document.body.appendChild(oImg);
+        }catch(err){
+            console.log(err);
+        }
+    })();
+</script>
+</html>

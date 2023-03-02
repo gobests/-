@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body></body>
+<script>
+    const arr = [100,5,20,3,200,6];
+    console.log(getMax(arr));
+
+    // 第四种方法
+    function getMax(arr){
+        // 第一次执行reduce的时候n1是100，n2是5，
+        // 第二次执行reduce的时候n2是20，n1变成了当前回调函数返回的数字
+        return arr.reduce((n1,n2)=>{
+            return n1>n2 ? n1:n2 //n1大于n2,把n1返回出去，否则把n2返回出去
+        })
+    }
+
+    // 第三种方法
+    function getMax(arr){
+        // n1和n2是相邻的两个数
+        arr.sort((n1,n2)=>{
+            return n2-n1;
+        });
+        return arr[0];
+    }
+
+    // 两种方法
+    // function getMax(arr){
+    //     return Math.max(...arr); // 数组打散
+    //     // return Math.max.apply(null,arr)
+    // }
+</script>
+</html>
